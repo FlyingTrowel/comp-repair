@@ -1,6 +1,8 @@
 import Index from "../pages/Index/Index";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
+import Cart from "../pages/Cart/Cart";
+
 
 
 const routes = [
@@ -15,7 +17,11 @@ const routes = [
     {
         path: "/signup",
         element: <Signup/>,
-    }
+    },
+    {
+        path: "/cart",
+        element: <Cart/>,
+    },
 ];
 
 export default routes;
