@@ -6,6 +6,7 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import logo from '../../img/logo.png';
 import cart from '../../img/cart.png';
 import cartNoti from '../../img/cartNoti.png';
+import { isAuth, logout } from "../../auth/token";
 
 
 
@@ -38,8 +39,26 @@ export default function NavBar(){
                     <Menu colorScheme="blue">
                         <MenuButton>{localStorage.getItem("username")? localStorage.getItem("username"): "guest"}<ChevronDownIcon/></MenuButton>
                         <MenuList bg={"#121212"}>
-                            <MenuItem as={ReactRouterLink} to={'/login'} bg={"#121212"} _hover={{bg: "#262626"}}>Login</MenuItem>
-                            <MenuItem as={ReactRouterLink} to={'/signup'} bg={"#121212"} _hover={{bg: "#262626"}}>Signup</MenuItem>
+                            {
+                                !isAuth() ?
+                                <> 
+                                <MenuItem as={ReactRouterLink} to={'/login'} bg={"#121212"} _hover={{bg: "#262626"}}>Login</MenuItem>
+                                <MenuItem as={ReactRouterLink} to={'/signup'} bg={"#121212"} _hover={{bg: "#262626"}}>Signup</MenuItem>
+                                </>
+                                :
+                                null
+                            }
+                            
+                            {
+                            isAuth() ? 
+                            <>
+                            <MenuItem onClick={()=>{
+                                logout();
+                                window.location.href = "/";
+                            }} bg={"#121212"} _hover={{bg: "#262626"}}>Logout</MenuItem>
+                            </>
+                            : 
+                            null}
                         </MenuList>
                     </Menu>
                 </Box>
