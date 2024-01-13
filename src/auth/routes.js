@@ -4,6 +4,7 @@ import Signup from "../pages/Signup/Signup";
 import Cart from "../pages/Cart/Cart";
 import { Navigate } from "react-router-dom";
 import { isAuth } from "./token";
+import Repair from "../pages/Repair/Repair";
 
 
 
@@ -24,6 +25,10 @@ const routes = [
         path: "/cart",
         element: <Cart/>,
     },
+    {
+        path: "repair",
+        element: <Repair/>
+    }
 ];
 
 export default routes;

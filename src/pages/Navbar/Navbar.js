@@ -15,7 +15,7 @@ export default function NavBar(){
 
     return(
         <ChakraProvider>
-            <Flex bgColor={'#121212'} height={'14'} width={'full'} p={2} position={'fixed'} top={'0'} shadow={'base'} pl={10} pr={10} align={'center'}>
+            <Flex bgColor={'#121212'} height={'14'} width={'full'} p={2} position={'fixed'} top={'0'} shadow={'base'} pl={10} pr={10} align={'center'} zIndex={'sticky'}>
 
                 <Box height={'10'} color={"#307af7"}>
                     <ReactRouterLink to={"/"}>
