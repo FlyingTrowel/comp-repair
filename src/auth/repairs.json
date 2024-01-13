@@ -1,0 +1,51 @@
+[
+    {
+        "id": 0,
+        "repair": [
+            {
+                "device_type": "PC",
+                "general": false,
+                "upgrade": false,
+                "reformat": true,
+                "battery": false,
+                "shipping": "Postage"
+            },
+            {
+                "device_type": "Laptop",
+                "general": true,
+                "upgrade": false,
+                "reformat": false,
+                "battery": false,
+                "shipping": "Dropoff"
+            }
+        ]
+
+        
+    },
+    {
+        "id": 1,
+        "repair":[
+            {
+                "device_type": "PC",
+                "general": true,
+                "upgrade": true,
+                "reformat": false,
+                "battery": false,
+                "shipping": "Dropoff"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "repair": [
+            {
+                "device_type": "Laptop",
+                "general": true,
+                "upgrade": true,
+                "reformat": true,
+                "battery": true,
+                "shipping": "Dropoff"
+            }
+        ]
+    }
+]

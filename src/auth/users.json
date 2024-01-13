@@ -1,12 +1,17 @@
 [
     {
         "id": 0,
-        "username": "admin",
-        "password": "admin"
+        "username": "aieman",
+        "password": "aieman"
     },
     {
         "id": 1,
-        "username": "aieman",
-        "password": "12345678"
+        "username": "hakimi",
+        "password": "hakimi"
+    },
+    {
+        "id": 2,
+        "username": "manbaz",
+        "password": "manbaz"
     }
 ]

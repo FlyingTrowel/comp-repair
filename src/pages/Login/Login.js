@@ -2,7 +2,7 @@ import { Box, Card, CardBody, CardHeader, ChakraProvider, Flex, FormControl, Hea
 import React, { useState } from "react";
 import NavBar from "../Navbar/Navbar";
 import { Link as ReactRouterLink } from "react-router-dom";
-import {handleLogin} from '../../auth/token';
+import {handleLogin, isTempRepair} from '../../auth/token';
 import { InfoIcon } from "@chakra-ui/icons";
 import users from '../../auth/users.json'
 
@@ -31,7 +31,8 @@ function Login(){
 
 
         if(loginStatus){
-            window.location.href = '/';
+
+            isTempRepair() ? window.location.href = '/repair-confirm' : window.location.href = '/';
         }
         else{
             console.log("wrong password or username");
@@ -129,7 +130,7 @@ function Login(){
                     <Box key={index} mb={4}>
                     <h2>User ID: {user.id}</h2>
                     <p>Username: {user.username}</p>
-                    <p>Username: {user.password}</p>
+                    <p>Password: {user.password}</p>
                     </Box>
                 ))}
                 </DrawerBody>

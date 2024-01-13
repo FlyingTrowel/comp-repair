@@ -3,9 +3,12 @@ import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import Cart from "../pages/Cart/Cart";
 import { Navigate } from "react-router-dom";
-import { isAuth } from "./token";
+import { isAuth, isTempRepair } from "./token";
 import Repair from "../pages/Repair/Repair";
 import Store from "../pages/Store/Store";
+import RepairConfirm from "../pages/Repair/RepairConfirm";
+import RepairHistory from "../pages/Repair/RepairHistory";
+import RepairAction from "../pages/Repair/RepairAction";
 
 
 
@@ -28,11 +31,23 @@ const routes = [
     },
     {
         path: "repair",
-        element: <Repair/>
+        element: <Repair/>,
+    },
+    {
+        path: "repair-confirm",
+        element: isAuth() && isTempRepair() ? <RepairConfirm/> : <Navigate to={"/login"}/>,
+    },
+    {
+        path: "repair-action/:id",
+        element: isAuth() ? <RepairAction/> : <Navigate to={"/login"}/>,
+    },
+    {
+        path: "repair-history",
+        element: isAuth()? <RepairHistory/> : <Navigate to={"/login"}/>,
     },
     {
         path: "store",
-        element: <Store/>
+        element: <Store/>,
     },
 ];
 

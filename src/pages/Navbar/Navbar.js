@@ -1,5 +1,5 @@
 import React from "react";
-import { ChakraProvider, Flex, Box, Spacer, Menu, MenuButton, MenuList, MenuGroup, MenuItem} from "@chakra-ui/react";
+import { ChakraProvider, Flex, Box, Spacer, Menu, MenuButton, MenuList, MenuGroup, MenuItem, Link as ChakraLink} from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link as ReactRouterLink } from "react-router-dom";
 
@@ -22,6 +22,32 @@ export default function NavBar(){
                     <img src={`${logo}`} alt="" style={{objectFit: 'scale-down', height: '100%',}}/>
                     </ReactRouterLink>
                 </Box>
+
+                <Box ml={10} color={'#dbbf91'}>
+                    {
+                        !isAuth() ? 
+                        <ChakraLink as={ReactRouterLink} to={'/repair'}>
+                        Repair
+                        </ChakraLink>
+                        :
+                        <Menu colorScheme="blue">
+                        <MenuButton>Repair<ChevronDownIcon/></MenuButton>
+                        <MenuList bg={"#121212"}>
+                            <MenuItem as={ReactRouterLink} to={'/repair'} bg={"#121212"} _hover={{bg: "#262626"}}>Repair Reservation</MenuItem>
+                            <MenuItem as={ReactRouterLink} to={'/repair-history'} bg={"#121212"} _hover={{bg: "#262626"}}>Repair History</MenuItem>
+
+                        </MenuList>
+                    </Menu>
+                    }
+                    
+                </Box>
+
+                <Box ml={10} color={'#dbbf91'}>
+                    <ChakraLink as={ReactRouterLink} to={'/store'}>
+                        Store
+                    </ChakraLink>
+                </Box>
+
                 <Spacer/>
 
                 <Box color={'#dbbf91'} mr={8}>
