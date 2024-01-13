@@ -5,6 +5,7 @@ import Cart from "../pages/Cart/Cart";
 import { Navigate } from "react-router-dom";
 import { isAuth } from "./token";
 import Repair from "../pages/Repair/Repair";
+import Store from "../pages/Store/Store";
 
 
 
@@ -28,7 +29,11 @@ const routes = [
     {
         path: "repair",
         element: <Repair/>
-    }
+    },
+    {
+        path: "store",
+        element: <Store/>
+    },
 ];
 
 export default routes;

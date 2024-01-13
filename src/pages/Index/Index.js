@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import NavBar from "../Navbar/Navbar";
-import { Box, Button, Card, ChakraProvider, Divider, Flex, Heading, Image, ListItem, Stack, UnorderedList } from "@chakra-ui/react";
-import compImage from '../../img/compIndex.webp'
+import { Box, Button, Card, ChakraProvider, Divider, Flex, Grid, GridItem, Heading, Image, ListItem, Stack, UnorderedList } from "@chakra-ui/react";
+import compImage from '../../img/compIndex.jpg'
 
 function Index(){
 
@@ -20,6 +20,10 @@ function Index(){
 
     const handleDIYClick = ()=>{
         scrollRef2.current?.scrollIntoView({behavior: 'smooth'});
+    }
+
+    const handleShopNowClick = ()=>{
+        window.location.href = "/store";
     }
     
 
@@ -78,15 +82,21 @@ function Index(){
         <Box opacity={0} ref={scrollRef2}></Box>
 
         <Flex>
-            <Card width={'full'} bg={'#262626'} color={'white'} mt={'20rem'} py={6}>
-                <Stack direction={'row'}>
+            <Card width={'full'} bg={'#262626'} color={'white'} mt={'10rem'} py={6} mb={'15rem'}>
+                <Stack direction={'row'} px={16}>
                     <Box>
-                        bunch of images
+                        <Image src={compImage} htmlWidth={'600px'} rounded={'3xl'}/>
                     </Box>
-                    <Divider orientation="vertical"/>
-                    <Box>
-                        Click here basterd
-                    </Box>
+                    <Divider orientation="vertical" mx={5}/>
+                    <Flex flexDirection={'column'} justify={'center'}>
+                        <Heading size={'lg'}>
+                            Buy parts and make use of your DIY skills
+                        </Heading>
+
+                        <Button mt={16} width={'fit-content'} onClick={handleShopNowClick}>
+                            Shop Now
+                        </Button>
+                    </Flex>
                 </Stack>
             </Card>
         </Flex>
