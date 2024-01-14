@@ -1,26 +1,17 @@
-import { Button, Card, ChakraProvider, Flex, Image, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React from "react";
 import NavBar from "../Navbar/Navbar";
+import { ChakraProvider, Flex, Button, Image, Table, TableContainer, Tbody, Td, Th, Thead, Tr  } from "@chakra-ui/react";
 import { getItem } from "../../auth/imgHandler";
 
-function Cart (){
-
+export default function StoreHistory(){
+    const history = JSON.parse(localStorage.getItem("history"));
     const items = getItem();
 
-    let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : null;
-    
-    if(!cart)
-        cart = localStorage.getItem("tempCart") ? JSON.parse(localStorage.getItem("tempCart")) : null;
 
-
-    const handleCheckoutClick = (id)=>{
-        window.location.href = `/checkout/${Number(id)}`
-    }
-
-    return (
+    return(
         <ChakraProvider>
             <NavBar/>
-            <Flex mt={14} justify={'center'}>
+            <Flex mt={14}>
             <TableContainer mt={32}>
                     <Table variant={'striped'} width={'3xl'} m={16} shadow={'dark-lg'} rounded={'md'}>
                         <Thead>
@@ -34,15 +25,12 @@ function Cart (){
                                 <Th>
                                     Name
                                 </Th>
-                                <Th>
-                                    Checkout
-                                </Th>
                             </Tr>
                         </Thead>
 
                         <Tbody>
                             {
-                                cart?.map((item, index)=>(
+                                history?.map((item, index)=>(
                                     <Tr>
                                         <Td>
                                             {index+1}
@@ -55,9 +43,6 @@ function Cart (){
                                         <Td>
                                             {items[item].name? items[item].name : null}
                                         </Td>
-                                        <Td>
-                                            <Button onClick={()=> handleCheckoutClick(item)} bg={'#262626'} _hover={{bg: "#404040"}} color={'white'}>Checkout</Button>
-                                        </Td>
                                     </Tr>
                                 ))
                             }
@@ -66,9 +51,6 @@ function Cart (){
                     </Table>
                 </TableContainer>
             </Flex>
-
         </ChakraProvider>
-    );
+    )
 }
-
-export default Cart;

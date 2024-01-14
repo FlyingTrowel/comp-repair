@@ -43,16 +43,28 @@ export default function NavBar(){
                 </Box>
 
                 <Box ml={10} color={'#dbbf91'}>
-                    <ChakraLink as={ReactRouterLink} to={'/store'}>
+                {
+                        !isAuth() ? 
+                        <ChakraLink as={ReactRouterLink} to={'/store'}>
                         Store
-                    </ChakraLink>
+                        </ChakraLink>
+                        :
+                        <Menu colorScheme="blue">
+                        <MenuButton>Store<ChevronDownIcon/></MenuButton>
+                        <MenuList bg={"#121212"}>
+                            <MenuItem as={ReactRouterLink} to={'/store'} bg={"#121212"} _hover={{bg: "#262626"}}>Shop Now</MenuItem>
+                            <MenuItem as={ReactRouterLink} to={'/store-history'} bg={"#121212"} _hover={{bg: "#262626"}}>Shopping History</MenuItem>
+
+                        </MenuList>
+                    </Menu>
+                    }
                 </Box>
 
                 <Spacer/>
 
                 <Box color={'#dbbf91'} mr={8}>
                     <ReactRouterLink to={"/cart"}>
-                    {localStorage.getItem("cart") ? 
+                    {localStorage.getItem("cart") || localStorage.getItem("tempCart") ? 
                     <img src={`${cartNoti}`} alt="" style={{objectFit: 'scale-down', height: '25px',}}/>
                     : 
                     <img src={`${cart}`} alt="" style={{objectFit: 'scale-down', height: '25px',}}/>}

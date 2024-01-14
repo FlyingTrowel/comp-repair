@@ -1,20 +1,36 @@
-import users from './users.json';
+import usersdb from './users.json';
 import repairs from './repairs.json';
+import cart from './cart.json';
+import history from './history.json';
 
 export function handleLogin(formData){
     console.log(formData);
 
     let loginStatus = false;
 
+    const tempCart = JSON.parse(localStorage.getItem("tempCart"));
+
+    const users = localStorage.getItem("users") ? JSON.parse(localStorage.getItem("users")) : usersdb
+
     users.forEach(user =>{
         console.log(user);
         if(user.username === formData.username)
             if(user.password === formData.password)
             {
+                if (!cart[user.id]?.cart.includes(tempCart)) {
+                    const a = tempCart ? cart[user.id].cart.push(...tempCart) : null;
+                }
+                const cartT = cart[user.id] ? JSON.stringify(cart[user.id]?.cart) : JSON.stringify([]);
+                const repairHistoryT = repairs[user.id] ? JSON.stringify(repairs[user.id]?.repair) : JSON.stringify([]);
+                const historyT = history[user.id] ? JSON.stringify(history[user.id]?.history) : JSON.stringify([]);
+
                 localStorage.setItem("userToken", JSON.stringify(user));
                 localStorage.setItem("username", user.username);
-                localStorage.setItem("repairHistory", JSON.stringify(repairs[user.id].repair));
+                localStorage.setItem("repairHistory", repairHistoryT);
+                localStorage.setItem("cart", cartT);
+                localStorage.setItem("history", historyT);
                 loginStatus = true;
+                localStorage.removeItem('tempCart');
             }
     });
 
@@ -68,5 +84,49 @@ export function saveRepair(){
     localStorage.setItem("repairHistory", JSON.stringify(repairHistory));
 
     removeTempRepair();
+
+}
+
+export function addToCart(id){
+    console.log(id);
+    id = Number(id); 
+    if(isAuth()){
+        const a = JSON.parse(localStorage.getItem("cart"));
+        
+        if (!a?.includes(id)) {
+            a?.push(id);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(a));
+    }else{
+        
+        const a = JSON.parse(localStorage.getItem("tempCart")) ? JSON.parse(localStorage.getItem("tempCart")) : [id];
+
+        console.log(a);
+
+        if (!a?.includes(id)) {
+            a?.push(id);
+        }
+
+        console.log(a);
+        localStorage.setItem("tempCart", JSON.stringify(a));
+    }
+}
+
+export function createAccount(formData){
+
+    console.log(formData);
+
+    const lastIndex = usersdb.length -1; 
+
+    const users = usersdb;
+    const repairsT = repairs;
+    const cartT = cart;
+    const historyT = history;
+
+
+    users.push({id: lastIndex+1, ...formData});
+
+    localStorage.setItem("users", JSON.stringify(users));
 
 }

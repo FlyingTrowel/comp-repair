@@ -1,0 +1,44 @@
+[
+    {
+        "id": 0,
+        "brand": "Crucial",
+        "name": "Crucial DDR4 PC RAM 8GB 3200MHz 288PIN Desktop DIMM Memory",
+        "price": "85.80",
+        "image": ""
+    },
+    {
+        "id": 1,
+        "brand": "Kingston",
+        "name": "Kingston Fury Impact DDR5 16GB 5600MHz Notebook Ram SODIMM",
+        "price": "255.00",
+        "image": ""
+    },
+    {
+        "id": 2,
+        "brand": "Nvidia",
+        "name": "Asus ROG STRIX Gaming GeForce RTX 4090 24GB OCGDDR6X Graphics Card",
+        "price": "11,869.00",
+        "image": ""
+    },
+    {
+        "id": 3,
+        "brand": "AMD",
+        "name": "SAPPHIRE NITRO+ AMD RADEON™ RX 7900 XT GAMING OC VAPOR-X 20GB GDDR6",
+        "price": "4,730.00",
+        "image": ""
+    },
+    {
+        "id": 4,
+        "brand": "AMD",
+        "name": "AMD Ryzen 9 5 7600 AM5 DESKTOP CPU PROCESSORS",
+        "price": "999.00",
+        "image": ""
+    },
+    {
+        "id": 5,
+        "brand": "Intel",
+        "name": "INTEL I9-14900K 30M Cache, up to 6.00 GHz LGA1700 PROCESSOR",
+        "price": "2,745.00",
+        "image": ""
+    }    
+]
