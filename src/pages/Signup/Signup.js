@@ -26,9 +26,9 @@ function Signup(){
         console.log(formData);
         createAccount(formData);
 
-        if(false){
+        if(true){
 
-            isTempRepair() ? window.location.href = '/repair-confirm' : window.location.href = '/';
+            window.location.href = '/login';
         }
         else{
             console.log("wrong password or username");

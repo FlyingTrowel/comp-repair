@@ -11,7 +11,7 @@ export default function StoreHistory(){
     return(
         <ChakraProvider>
             <NavBar/>
-            <Flex mt={14}>
+            <Flex mt={14} justify={'center'}>
             <TableContainer mt={32}>
                     <Table variant={'striped'} width={'3xl'} m={16} shadow={'dark-lg'} rounded={'md'}>
                         <Thead>
